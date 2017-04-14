@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="authentication"
+    targetNamespace="http://127.0.0.1:3000/login"
+    xmlns="http://127.0.0.1:3000/login"
+    xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+
+    <wsdl:message name="loginRequest">
+        <wsdl:part name="email" type="xs:string"/>
+        <wsdl:part name="password" type="xs:string"/>
+    </wsdl:message>
+
+    <wsdl:message name="loginResponse">
+		    <wsdl:part name="loginRequestResponse" type="xs:boolean"/>
+        <wsdl:part name="username" type="xs:string"/>
+    </wsdl:message>
+
+    <wsdl:portType name="loginBank">
+
+        <wsdl:operation name="authenticate">
+            <wsdl:input message="loginRequest"/>
+            <wsdl:output message="loginResponse"/>
+        </wsdl:operation>
+
+    </wsdl:portType>
+
+    <wsdl:binding name="loginBankSoapBinding" type="loginBank">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+        <wsdl:operation name="authenticate">
+            <soap:operation soapAction="authenticate"/>
+            <wsdl:input>
+                <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+
+    </wsdl:binding>
+    <wsdl:service name="AuthenticationService">
+        <wsdl:port binding="loginBankSoapBinding" name="loginPort">
+            <soap:address location="http://localhost:3001/login"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

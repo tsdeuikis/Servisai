@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> VK eSchool</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+		<link rel="stylesheet" type = "text/css" href="css/style.css">
+	</head>
+	<body>
+		  <div class="wrapper">
+			<form action="/register" class="form-register" method="post">
+      <h1 class="form-register-heading">@VK</h1>
+      <input type="text" class="form-control" name="username" placeholder="Rodomasis vardas" required="" autofocus=""/>
+      <input type="email" class="form-control" name="email" placeholder="El. Paštas" required="" autofocus=""/>
+      <input type="password" class="form-control" name="password" placeholder="Slaptažodis" required=""/>
+      <input type="password" class="form-control" name="confirmPwd" placeholder="Pakartoti slaptažodį" required=""/>
+
+      <div class="radio">
+      <label><input type="radio" name="userStatus" value="student" required>Studentas</label></br>
+      <label><input type="radio" name="userStatus" value="teacher" >Dėstytojas</label>
+      </div>
+      <button class="btn btn-lg btn-primary btn-block">Registruotis</button>
+		<hr>
+	  <a href="login" class="btn btn-lg btn-default btn-block">Atgal</a>
+    </form>
+  </div>
+	</body>
+</html>
